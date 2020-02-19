@@ -37,13 +37,14 @@ L.control.layers(baseMaps).addTo(mymap);
 // Grabbing, parsing and add GeoJSON data(FeatureCollection) on map object as geoJSON layer
 d3.json(jsonDataURL).then((data) =>{
     L.geoJSON(data,{
-        //set the style for each circleMarker
+        //set the style for each circleMarker, pass the magnitude into two separate functions
+        // to calculate the color and radius.
         style: function (feature) {
             return {
                 opacity: 1,
                 fillOpacity: 1,
-                fillColor: "#ffae42",
-                color: "#000000",
+                fillColor: getColor(feature.properties.mag), // use function instead a single color
+                color: "#000000",  // black
                 radius: getRadius(feature.properties.mag),
                 stroke: true,
                 weight: 0.5
@@ -58,6 +59,25 @@ d3.json(jsonDataURL).then((data) =>{
     }).addTo(mymap);
 });
 
+// This function determines the fillcolor of circleMarkers based on magtitude
+function getColor(magnitude) {
+    if (magnitude > 5) {
+        return "#ea2c2c";
+      }
+      if (magnitude > 4) {
+        return "#ea822c";
+      }
+      if (magnitude > 3) {
+        return "#ee9c00";
+      }
+      if (magnitude > 2) {
+        return "#eecc00";
+      }
+      if (magnitude > 1) {
+        return "#d4ee00";
+      }
+      return "#98ee00";
+};
 
 // This function determines the radius of the earthquake marker based on its magnitude.
 // Earthquakes with a magnitude of 0 will be plotted with a radius of 1.
@@ -65,18 +85,3 @@ function getRadius(magnitude) {
     if (magnitude === 0) {return 1}
     return magnitude *4;
 };
-
-// This function returns the style data for each of the earthquakes we plot on
-// the map. We pass the magnitude of the earthquake into a function
-// to calculate the radius.
-//function styles(feature) {
-    //return {
-        //opacity: 1,
-        //fillOpacity: 1,
-        //fillColor: "#ffae42",
-        //color: "#000000",
-        //radius: getRadius(feature.properties.mag),
-        //stroke: true,
-        //weight: 0.5
-    //};};
-
