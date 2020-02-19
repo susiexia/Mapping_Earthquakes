@@ -1,49 +1,8 @@
-// Add GeoJSON data a FeatureCollection object that has properties and geometry for SFO.
-let sanFranAirport =
-{"type":"FeatureCollection","features":[{
-    "type":"Feature",
-    "properties":{
-        "id":"3469",
-        "name":"San Francisco International Airport",
-        "city":"San Francisco",
-        "country":"United States",
-        "faa":"SFO",
-        "icao":"KSFO",
-        "alt":"13",
-        "tz-offset":"-8",
-        "dst":"A",
-        "tz":"America/Los_Angeles"},
-        "geometry":{
-            "type":"Point",
-            "coordinates":[-122.375,37.61899948120117]}}
-]};
-
-
+// Add GeoJSON data URL
+jsonDataURL="https://raw.githubusercontent.com/susiexia/Mapping_Earthquakes/master/majorAirports.json"
 
 // initialize a map object and set up a center and zoom level
-let mymap = L.map("mapid").setView([37.5, -122.5], 10);
-
-// Grabbing and add GeoJSON data(FeatureCollection) on map object
-// turn each feature into a marker on the map using pointToLayer
-
-L.geoJSON(sanFranAirport,{
-   pointToLayer: function (feature, latlng) {
-        console.log(feature);
-        return L.marker(latlng).bindPopup("<h2> Airport code: " +feature.properties.faa+"</h2><hr><h3> Airport name: "+ feature.properties.name +"</h3>")
-    }
-}
-    ).addTo(mymap);
-
-// turn each feature into a popup on the map using onEachFeature
-//L.geoJSON(sanFranAirport, {
-        //onEachFeature: function (feature, layer) {
-            //console.log(layer);
-            //layer.bindPopup("<h2> Airport code: " +feature.properties.faa+
-                        //"</h2><hr><h3> Airport name: "+ feature.properties.name +"</h3>")
-        //}}).addTo(mymap);
-
-
-
+let mymap = L.map("mapid").setView([30,30], 1);
 
 // create a street tile layer based on Leatlet by mapbox style API 
 
@@ -55,3 +14,23 @@ let streetsTile = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{
 
 // add 'greymap' tile layer to map object
 streetsTile.addTo(mymap);
+
+// Grabbing, parsing and add GeoJSON data(FeatureCollection) on map object
+// turn each feature into a marker on the map using pointToLayer
+d3.json(jsonDataURL).then((data) =>{
+    L.geoJSON(data,{
+        pointToLayer: function (feature, latlng) {
+            console.log(feature);
+            return L.marker(latlng).bindPopup("<h2> Airport code: " +feature.properties.faa+"</h2><hr><h3> Airport name: "+ feature.properties.name +"</h3>")
+        }
+    }).addTo(mymap);
+})
+// turn each feature into a popup on the map using onEachFeature
+//L.geoJSON(sanFranAirport, {
+        //onEachFeature: function (feature, layer) {
+            //console.log(layer);
+            //layer.bindPopup("<h2> Airport code: " +feature.properties.faa+
+                        //"</h2><hr><h3> Airport name: "+ feature.properties.name +"</h3>")
+        //}}).addTo(mymap);
+
+
