@@ -23,8 +23,8 @@ let baseMaps = {
 }
 // initialize a map object 
 let mymap = L.map("mapid", {
-            center:[30,30],
-            zoom: 1,
+            center:[44.0, -80.0],
+            zoom: 2,
             layers:[dark]
 });
 
@@ -35,10 +35,11 @@ L.control.layers(baseMaps).addTo(mymap);
 // turn each feature into a marker on the map using pointToLayer
 d3.json(jsonDataURL).then((data) =>{
     L.geoJSON(data,{
+        // add style on lineStrings
         style:{
             "color":"yellow",
-            "weight":2
-        },
+            "weight":2 },
+        // add popup for each feature
         onEachFeature: function (feature, layer) {
             return layer.bindPopup("<h2> Airline: " +feature.properties.airline+"</h2><hr><h3> Destination: "+ feature.properties.dst +"</h3>")
         }
