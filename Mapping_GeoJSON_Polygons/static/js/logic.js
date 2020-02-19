@@ -1,31 +1,31 @@
 // Add GeoJSON data URL
-jsonDataURL="https://raw.githubusercontent.com/susiexia/Mapping_Earthquakes/Mapping_GeoJSON_LineStrings/torontoRoutes.json"
+jsonDataURL="https://raw.githubusercontent.com/susiexia/Mapping_Earthquakes/master/torontoNeighborhoods.json"
 
 
 // create a light tile layer based on Leatlet by mapbox style API 
-let light = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+let street = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
-    id: 'mapbox/light-v10',
+    id: 'mapbox/streets-v11',
     accessToken: API_KEY});
 
     // create another tile layer for dark
-let dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
-    id: 'mapbox/dark-v10',
+    id: 'mapbox/satellite-streets-v11',
     accessToken: API_KEY});
 
 
 let baseMaps = {
-    "light_Mode": light,
-    "dark_Mode": dark
+    "Streets": street,
+    "satellite and Streets": satelliteStreets
 }
 // initialize a map object 
 let mymap = L.map("mapid", {
-            center:[44.0, -80.0],
-            zoom: 2,
-            layers:[dark]
+            center:[43.7, -79.3],
+            zoom: 11,
+            layers:[satelliteStreets]
 });
 
 
@@ -37,11 +37,11 @@ d3.json(jsonDataURL).then((data) =>{
     L.geoJSON(data,{
         // add style on lineStrings
         style:{
-            "color":"yellow",
+            "color":"blue",
+            "fillColor":"yellow",
             "weight":2 },
-        // add popup for each feature
         onEachFeature: function (feature, layer) {
-            return layer.bindPopup("<h2> Airline: " +feature.properties.airline+"</h2><hr><h3> Destination: "+ feature.properties.dst +"</h3>")
+            return layer.bindPopup("<h2> Neighborhood: " +feature.properties.AREA_NAME+"</h2>")
         }
     }).addTo(mymap);
 })
