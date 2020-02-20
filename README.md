@@ -13,7 +13,7 @@ The purpose of this project is to visually show the differences between the magn
 
 - Use the Leaflet library to plot the data on a Mapbox map through an API request and create interactivity for the earthquake data.
 
-## Project Process
+## Project Process   Create interactivity for the earthquake data, add legend control and layer control as well as popup circleMarker based on magnitude level.
 
 - Retrieve data from a GeoJSON file.
 

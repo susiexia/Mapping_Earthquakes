@@ -107,15 +107,15 @@ let legend = L.control({
 // add details on legend layer
 legend.onAdd = function () {
         // create a new HTML tag
-        let div = L.DomUtil.create("div", "info legend");  // first tag, second are classes
+        let div = L.DomUtil.create("div", "legend");  // first tag, second are classes
         // create two arrays ready to legend 
         const magnitudes = [0,1,2,3,4,5];
-        const colorBox = ["#98ee00","#d4ee00","#eecc00","#ee9c00","#ea822c","#ea2c2c"];
+        const colorBox = [];
         // Loop through intervals of magnitudes to generate a label with a colored square for each interval.
         for (var i=0; i<magnitudes.length; i++) {
             // write content into html
-            div.innerHTML += "<i style='background: "+colorBox[i]+"'</i>" +
-                            magnitudes[i] + (magnitudes[i+1] ? "-" +magnitudes[i+1] +"<br><br>" : "+");
+            div.innerHTML += "<i style='background: "+getColor(magnitudes[i] +1)+"'</i>" +
+                            magnitudes[i] + (magnitudes[i+1] ? "-" +magnitudes[i+1] +"<br>" : "+");
         };
         return div;
 };
