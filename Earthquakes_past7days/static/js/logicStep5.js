@@ -73,7 +73,7 @@ d3.json(jsonDataURL).then((data) =>{
 
 // This function determines the fillcolor of circleMarkers based on magtitude
 function getColor(magnitude) {
-    if (magnitude > 5) {
+    if (magnitude > 5) {              //magnitude > 5 ? return "#EA2C2C" :
         return "#ea2c2c";
       }
       if (magnitude > 4) {
@@ -115,8 +115,10 @@ legend.onAdd = function () {
         for (var i=0; i<magnitudes.length; i++) {
             // write content into html
             div.innerHTML += "<i style='background: "+colorBox[i]+"'</i>" +
-                            magnitudes[i] + (magnitudes[i+1] ? "&ndash"+magnitudes[i+1] +"<br>" : "+");
+                            magnitudes[i] + (magnitudes[i+1] ? "-" +magnitudes[i+1] +"<br><br>" : "+");
         };
         return div;
-
 };
+
+// add legend on map
+legend.addTo(mymap);
