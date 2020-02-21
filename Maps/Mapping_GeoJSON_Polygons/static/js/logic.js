@@ -1,5 +1,5 @@
 // Add GeoJSON data URL
-jsonDataURL="https://raw.githubusercontent.com/susiexia/Mapping_Earthquakes/master/torontoNeighborhoods.json"
+jsonDataURL="https://raw.githubusercontent.com/susiexia/Mapping_Earthquakes/master/GeoJSON_resources/torontoNeighborhoods.json"
 
 
 // create a light tile layer based on Leatlet by mapbox style API 

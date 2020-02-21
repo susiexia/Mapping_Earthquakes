@@ -1,5 +1,5 @@
 // Add GeoJSON data URL
-jsonDataURL="https://raw.githubusercontent.com/susiexia/Mapping_Earthquakes/master/majorAirports.json"
+jsonDataURL="https://raw.githubusercontent.com/susiexia/Mapping_Earthquakes/master/GeoJSON_resources/majorAirports.json"
 
 // initialize a map object and set up a center and zoom level
 let mymap = L.map("mapid").setView([30,30], 1);

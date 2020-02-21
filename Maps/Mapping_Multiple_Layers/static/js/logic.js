@@ -1,5 +1,5 @@
 // Add GeoJSON data URL
-jsonDataURL="https://raw.githubusercontent.com/susiexia/Mapping_Earthquakes/master/majorAirports.json"
+jsonDataURL="https://raw.githubusercontent.com/susiexia/Mapping_Earthquakes/master/GeoJSON_resources/majorAirports.json"
 
 
 // create a street tile layer based on Leatlet by mapbox style API 
