@@ -29,7 +29,7 @@ the relationship between tectonic plates and the location, frequency of seismic 
 
 - Render maps on a server.
 
-## Project Results
+## Chellenge Results
 
 - [HTML File](/Earthquake_Challenge/index.html)
 
@@ -38,7 +38,7 @@ the relationship between tectonic plates and the location, frequency of seismic 
 - [CSS File](/Earthquake_Challenge/static/css/style.css)
 
 --------------------------------------------------
-Map URL: <https://susiexia.github.io/Mapping_Earthquakes/>
+**Map URL**: <https://susiexia.github.io/Mapping_Earthquakes/>
 
 --------------------------------------------------
 ![challenge_Result.PNG](/challenge_Result.PNG)
