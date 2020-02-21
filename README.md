@@ -29,13 +29,23 @@ the relationship between tectonic plates and the location, frequency of seismic 
 
 - Render maps on a server.
 
-# Project Result
+## Project Results
 
-webpage URL: <https://susiexia.github.io/Mapping_Earthquakes/>
+- [HTML File](/Earthquake_Challenge/index.html)
+
+- [JavaScript File](/Earthquake_Challenge/static/js/logic.js)
+
+- [CSS File](/Earthquake_Challenge/static/css/style.css)
+
+--------------------------------------------------
+Map URL: <https://susiexia.github.io/Mapping_Earthquakes/>
 
 --------------------------------------------------
 ![challenge_Result.PNG](/challenge_Result.PNG)
 
+--------------------------------------------------
+
+**Map Description:**
 
 1. Each earthquake will be visually represented by a circle and color, where a higher magnitude will have a larger diameter and will be darker in color. There are more color information in legend, which is in the right bottom of page.
 

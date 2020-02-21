@@ -2,24 +2,25 @@
 jsonEarthquakeDataURL="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 jsonTectonicDataURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json"
 
+let defaultAPI_KEY = "pk.eyJ1Ijoic3VzaWV4aWEiLCJhIjoiY2s2bzlnZTl6MGdrOTNrcGIxZ25hdG5rciJ9.6nEWCcAqnSGrZthROVpFdQ"
 // create three tile layers based on Leatlet by mapbox styles API 
 let street = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox/streets-v11',
-    accessToken: API_KEY});
+    accessToken: defaultAPI_KEY});
 
 let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox/satellite-streets-v11',
-    accessToken: API_KEY});
+    accessToken: defaultAPI_KEY});
 
 let light = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox/light-v10',
-    accessToken: API_KEY});
+    accessToken: defaultAPI_KEY});
 
 // define an object of base tile layers group
 let baseMaps = {
@@ -39,8 +40,8 @@ let overlays ={
 
 // initialize a map object 
 let mymap = L.map("mapid", {
-    center:[39.5,-98.5],
-    zoom: 3,
+    center:[32,-60],
+    zoom: 4,
     layers:[street]  // default map style
 });
 // add overlayGroup on map instantiation
